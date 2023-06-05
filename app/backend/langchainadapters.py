@@ -45,22 +45,22 @@ class HtmlCallbackHandler (BaseCallbackHandler):
         self,
         serialized: Dict[str, Any],
         action: AgentAction,
-        color: Optional[str] = None,
+        color: Optional[str] = "#ff9b00",
         **kwargs: Any,
     ) -> None:
         """Print out the log in specified color."""
-        self.html += f"<span style='color:{color}'>{ch(action.log)}</span><br>"
+        self.html += f"<span style='color:#ff9b00'>{ch(action.log)}</span><br>"
 
     def on_tool_end(
         self,
         output: str,
-        color: Optional[str] = None,
+        color: Optional[str] = "#ff9b00",
         observation_prefix: Optional[str] = None,
         llm_prefix: Optional[str] = None,
         **kwargs: Any,
     ) -> None:
         """If not the final action, print out observation."""
-        self.html += f"{ch(observation_prefix)}<br><span style='color:{color}'>{ch(output)}</span><br>{ch(llm_prefix)}<br>"
+        self.html += f"{ch(observation_prefix)}<br><span style='color:#ff9b00'>{ch(output)}</span><br>{ch(llm_prefix)}<br>"
 
     def on_tool_error(self, error: Exception, **kwargs: Any) -> None:
         self.html += f"<span style='color:red'>Tool error: {ch(error)}</span><br>"
